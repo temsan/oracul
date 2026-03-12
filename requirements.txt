@@ -1,0 +1,42 @@
+# Telegram API
+telethon==1.34.0
+
+# HTTP
+aiohttp==3.9.3
+
+# Environment
+python-dotenv==1.0.0
+
+# AI/ML (OpenRouter)
+# Основной бот работает через aiohttp к OpenRouter API,
+# дополнительные зависимости — для локальных анализаторов
+openai>=1.0.0  # Для Groq API (расшифровка голоса через Whisper)
+
+# Database (optional)
+sqlalchemy==2.0.25
+alembic==1.13.1
+pydantic==2.5.3
+pydantic-settings>=2.0.0
+
+# PostgreSQL (optional)
+# psycopg2-binary==2.9.9
+# asyncpg (для async SQLAlchemy)
+
+# SQLite async (optional)
+aiosqlite==0.20.0
+
+# Redis (optional)
+# redis==5.0.1
+
+# NLP (для локальных анализаторов, optional)
+# transformers==4.37.2
+# torch==2.1.2
+# sentence-transformers==2.2.2
+
+# Audio (для голосовых анализаторов)
+librosa==0.10.1
+soundfile==1.0.7
+# whisper==1.1.10  # Не нужен, используем Groq API для транскрипции
+
+# Utilities
+tqdm==4.66.1

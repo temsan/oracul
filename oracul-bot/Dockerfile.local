@@ -1,0 +1,74 @@
+FROM python:3.11-slim
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    libsndfile1 \
+    ffmpeg \
+    git \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set work directory
+WORKDIR /app
+
+# Install Python dependencies
+COPY requirements_local.txt .
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r requirements_local.txt
+
+# Install additional dependencies for local models
+RUN pip install --no-cache-dir \
+    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+
+# Copy project
+COPY . .
+
+# Create directories for models and cache
+RUN mkdir -p /app/models /app/logs /root/.cache/whisper /root/.cache/huggingface
+
+# Create non-root user
+RUN useradd --create-home --shell /bin/bash oracul
+RUN chown -R oracul:oracul /app /root/.cache
+USER oracul
+
+# Pre-download some models (optional, for faster startup)
+RUN python -c "
+import whisper
+import transformers
+from transformers import AutoTokenizer, AutoModel
+
+print('Pre-downloading Whisper base model...')
+whisper.load_model('base')
+
+print('Pre-downloading text models...')
+try:
+    AutoTokenizer.from_pretrained('blanchefort/rubert-base-cased-sentiment')
+    AutoModel.from_pretrained('blanchefort/rubert-base-cased-sentiment')
+except:
+    print('Could not pre-download sentiment model')
+
+try:
+    AutoTokenizer.from_pretrained('j-hartmann/emotion-english-distilroberta-base')
+    AutoModel.from_pretrained('j-hartmann/emotion-english-distilroberta-base')
+except:
+    print('Could not pre-download emotion model')
+
+print('Model pre-download completed')
+"
+
+# Expose port
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=30s --start-period=120s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Run the application
+CMD ["python", "main_local.py"]

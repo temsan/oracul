@@ -1,0 +1,29 @@
+=== СОЗДАННЫЕ ФАЙЛЫ ===
+
+СКРИПТЫ:
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\scripts\career_job_search\scam_detection\check_job_scam.py
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\scripts\career_job_search\scam_detection\check_specific_job.py
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\scripts\career_job_search\scam_detection\detect_job_scam.py
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\scripts\career_job_search\scam_detection\find_scam_network.py
+
+МОДУЛИ БОТА:
+  - oracul-bot/analyzers/job_scam_analyzer.py
+  - oracul-bot/bot/job_scam_handler.py
+
+ДОКУМЕНТАЦИЯ:
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\docs\scam_detector\INDEX.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\docs\scam_detector\QUICK_SCAM_CHECK.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\docs\scam_detector\SCAM_DETECTOR_GUIDE.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\docs\scam_detector\SCAM_DETECTOR_INTEGRATION.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\docs\scam_detector\SCAM_DETECTOR_SUMMARY.md
+
+ОТЧЕТЫ:
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\analysis\career_development\scam_reports\job_scam_analysis_20260115_144218.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\analysis\career_development\scam_reports\README.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\analysis\career_development\scam_reports\scam_network_report_20260115_144410.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\analysis\career_development\scam_reports\detailed\scam_analysis_margo_antipovaa.md
+  - C:\Users\temsan\IdeaProjects\tg-analysis-platform\analysis\career_development\scam_reports\detailed\scam_check_20260115_143542.md
+
+ГЛАВНЫЕ ДОКУМЕНТЫ:
+  - SCAM_DETECTOR_FINAL_REPORT.md
+  - SCAM_DETECTOR_COMPLETE.md
